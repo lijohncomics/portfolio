@@ -238,3 +238,8 @@
     color: #838490;
   }
 }
+
+.image-render-crisp {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
