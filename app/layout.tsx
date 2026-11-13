@@ -40,7 +40,8 @@ export default function RootLayout({
       className={cn("font-sans", geist.variable, geistMono.variable)}
       suppressHydrationWarning
     >
-      <head>
+            <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -59,6 +60,7 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body className="antialiased min-h-screen bg-background text-foreground flex flex-col">
         <SiteThemeProvider>
           <BridgeProvider />
