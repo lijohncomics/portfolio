@@ -7,22 +7,20 @@ function ThemeSync() {
   const { setTheme } = useTheme();
 
   useEffect(() => {
+    // Чистим вообще все возможные ключи памяти при старте вкладки
+    try {
+      localStorage.removeItem("site-theme");
+      localStorage.removeItem("theme");
+    } catch (e) {}
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    
-    // Проверяем, зафиксировал ли пользователь тему в текущей сессии вкладки
     const sessionActive = sessionStorage.getItem("theme-clicked");
 
+    // Если в этой сессии клика не было — включаем строго тему устройства
     if (!sessionActive) {
-      // Если это первый заход во вкладку, строго подчиняемся системе устройства
-      const systemTheme = mediaQuery.matches ? "dark" : "light";
-      setTheme(systemTheme);
-      // Сбрасываем долгосрочную память, чтобы при следующем открытии сайта приоритет был у системы
-      try {
-        localStorage.removeItem("site-theme");
-      } catch (e) {}
+      setTheme(mediaQuery.matches ? "dark" : "light");
     }
 
-    // Слушаем изменение темы в настройках самого Mac/смартфона в реальном времени
     const handleChange = (e: MediaQueryListEvent) => {
       const sessionActiveNow = sessionStorage.getItem("theme-clicked");
       if (!sessionActiveNow) {
@@ -42,7 +40,7 @@ export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
-      enableSystem={true}
+      enableSystem={false} // Отключаем внутренний хаотичный встроенный поиск системы
       disableTransitionOnChange
       storageKey="site-theme"
     >
