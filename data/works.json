@@ -66,7 +66,7 @@
       ],
       "figmaEmbeds": []
     },
-    {
+        {
       "slug": "ozon-family",
       "index": "03",
       "titleRu": "Ozon. Дополнительные функции для семейных людей",
@@ -92,7 +92,6 @@
       "figmaEmbeds": [
         {
           "src": "https://embed.figma.com/proto/xs1Opz4MNMI36Jt4JgqDS6/Ozon-Family?node-id=3143-21733&p=f&viewport=41%2C342%2C0.1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3143%3A21733&page-id=3143%3A19549&show-proto-sidebar=1&embed-host=share",
-          "afterImage": 1
           "afterImage": 1
         },
         {
