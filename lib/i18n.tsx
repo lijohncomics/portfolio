@@ -17,7 +17,7 @@ const ru = {
     about: "Обо мне",
     contacts: "Контакты",
     menu: "Меню",
-    animation: "анимация",
+    animation: "Анимация",
     navLabel: "Основная навигация",
     settings: "Настройки",
     settingsMenu: "Настройки сайта",
