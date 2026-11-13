@@ -18,7 +18,7 @@ export function LocalTime({ className }: { className?: string }) {
         hourCycle: "h23",
       });
 
-      setTime(`${clock} — ${dict.home.localTime.toLowerCase()}`);
+      setTime(`${clock} ${dict.home.localTime}`);
     };
 
     format();
@@ -31,5 +31,5 @@ export function LocalTime({ className }: { className?: string }) {
     };
   }, [dict]);
 
-  return <span className={className}>{time ?? `—:— ${dict.home.localTime.toLowerCase()}`}</span>;
+  return <span className={className}>{time ?? `—:— ${dict.home.localTime}`}</span>;
 }
