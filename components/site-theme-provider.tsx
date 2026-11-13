@@ -7,18 +7,20 @@ function ThemeSync() {
   const { setTheme } = useTheme();
 
   useEffect(() => {
+    // Принудительно очищаем старый выбор темы из памяти браузера при каждом заходе/обновлении
+    try {
+      localStorage.removeItem("site-theme");
+    } catch (e) {}
+
     const handleThemeChange = () => {
-      const savedTheme = localStorage.getItem("site-theme");
-      if (!savedTheme || savedTheme === "system") {
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        setTheme(systemTheme);
-      }
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      setTheme(systemTheme);
     };
 
-    // Запуск при загрузке
+    // Мгновенно включаем системную тему
     handleThemeChange();
 
-    // Слушаем изменение темы устройства в реальном времени
+    // Следим за изменениями темы в настройках устройства в реальном времени
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     mediaQuery.addEventListener("change", handleThemeChange);
     
