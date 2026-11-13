@@ -129,11 +129,11 @@ function localizeWork(work: Work, locale: Locale): LocalizedWork {
     client: locale === "en" ? work.clientEn : work.clientRu,
     category: work.category,
     description: locale === "en" ? work.descriptionEn : work.descriptionRu,
-    cover: work.cover ? `/portfolio${work.cover}` : undefined,
+    cover: work.cover,
     coverAspect: work.coverAspect,
     coverOnPage: work.coverOnPage,
     images: work.images?.map((image) => ({
-      src: `/portfolio${image.src}`,
+      src: image.src,
       caption: locale === "en" ? image.captionEn : image.captionRu,
     })),
     figmaEmbeds: work.figmaEmbeds,
