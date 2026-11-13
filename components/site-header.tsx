@@ -74,8 +74,8 @@ function ThemeToggleRow() {
       type="button"
       role="switch"
       aria-checked={dark}
-            onClick={() => {
-        sessionStorage.setItem("theme-clicked", "true");
+      onClick={() => {
+        sessionStorage.setItem("theme-manually-clicked", "true");
         setTheme(dark ? "light" : "dark");
       }}
       className="group flex w-full items-center justify-between gap-4 px-4 py-3 cursor-pointer transition-colors hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
