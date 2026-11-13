@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     "Иван Лавриненко / John Li — визуальные системы, айдентика и полиграфическая подготовка",
   description:
     "Проектирую визуальные системы и айдентику, довожу идеи до готовых макетов — от концепции до чистого печатного файла.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +40,25 @@ export default function RootLayout({
       className={cn("font-sans", geist.variable, geistMono.variable)}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                let theme = localStorage.getItem('site-theme');
+                if (!theme || theme === 'system') {
+                  theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased min-h-screen bg-background text-foreground flex flex-col">
         <SiteThemeProvider>
           <BridgeProvider />
