@@ -96,32 +96,34 @@ export function WorkContent() {
       <RevealOnScroll variant="scale" delay={100}>
         <section
           aria-label={dict.works.workTitle}
-          className="pb-12 md:pb-16 xl:pb-24 px-6 lg:px-0"
+          className="pb-12 md:pb-16 xl:pb-24 px-6 lg:px-0 max-w-7xl mx-auto w-full"
         >
           {work.cover && work.coverOnPage ? (
-            <div className="mb-12 md:mb-16 xl:mb-24">
+            <div className="mb-12 md:mb-16 xl:mb-24 flex justify-center">
               <img
                 src={work.cover}
                 alt={dict.works.previewAlt(work.title)}
-                className="block w-full h-auto object-left select-none image-render-crisp"
+                className="block max-w-full h-auto object-center select-none image-render-crisp"
                 decoding="async"
               />
             </div>
           ) : null}
           {images.length > 0 ? (
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center">
               {images.map((image, idx) => (
                 <Fragment key={image.src}>
                   {image.src.toLowerCase().endsWith(".mp4") ? (
-                    <video
-                      src={image.src}
-                      controls
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="block w-full h-auto"
-                    />
+                    <div className="w-full flex justify-center">
+                      <video
+                        src={image.src}
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="block max-w-full h-auto"
+                      />
+                    </div>
                   ) : (
                     <img
                       src={image.src}
@@ -130,21 +132,23 @@ export function WorkContent() {
                         idx + 1,
                         images.length
                       )}
-                      className="block w-full h-auto image-render-crisp select-none"
+                      className="block max-w-full h-auto image-render-crisp select-none"
                       loading={idx < 2 ? "eager" : "lazy"}
                       decoding="async"
                     />
                   )}
                   {idx === 0 && localVideoReels[work.slug] ? (
-                    <video
-                      src={localVideoReels[work.slug]}
-                      controls
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="block w-full h-auto"
-                    />
+                    <div className="w-full flex justify-center">
+                      <video
+                        src={localVideoReels[work.slug]}
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="block max-w-full h-auto"
+                      />
+                    </div>
                   ) : null}
                   {(work.figmaEmbeds ?? [])
                     .filter((embed) => embed.afterImage === idx)
@@ -168,7 +172,7 @@ export function WorkContent() {
                 ))}
             </div>
           ) : (
-            <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden dark-section flex items-center justify-center">
+            <div className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden dark-section flex items-center justify-center w-full">
               <span className="text-[clamp(3rem,12vw,9rem)] font-bold tracking-tighter uppercase text-background/80 select-none text-center leading-[1.05] break-words">
                 {work.title}
               </span>
