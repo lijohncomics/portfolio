@@ -242,4 +242,9 @@
 .image-render-crisp {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
 }
