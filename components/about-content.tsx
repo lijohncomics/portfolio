@@ -32,7 +32,7 @@ export function AboutContent() {
           <div className="relative aspect-square w-56 sm:w-64 md:w-full max-w-80 overflow-hidden rounded-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/portfolio/portrait.png"
+              src="/portrait.png"
               alt={dict.about.portrait}
               className="absolute inset-0 h-full w-full object-cover"
             />
