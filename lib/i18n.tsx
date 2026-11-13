@@ -55,7 +55,7 @@ const ru = {
     typeLabel: "Тип проекта",
     clientLabel: "Клиент",
     showReelCaption: "шоу рил проекта",
-    reelNote: "видео / youtube",
+    reelNote: "видео / шоурил",
     workReelTitle: "шоу рил",
     imageAlt: (title: string, i: number, total: number) =>
       `${title} — изображение ${i} из ${total}`,
@@ -133,7 +133,7 @@ const en: Dict = {
     typeLabel: "Project type",
     clientLabel: "Client",
     showReelCaption: "project show reel",
-    reelNote: "video / youtube",
+    reelNote: "video / showreel",
     workReelTitle: "show reel",
     imageAlt: (title: string, i: number, total: number) =>
       `${title} — image ${i} of ${total}`,
@@ -177,8 +177,17 @@ function subscribe(callback: () => void) {
 
 function getSnapshot(): Locale {
   try {
-    const value = window.localStorage.getItem(STORAGE_KEY);
-    return value === "en" ? "en" : "ru";
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === "en" || saved === "ru") return saved;
+    const lang = (navigator.language || "").toLowerCase();
+    if (
+      lang.startsWith("ru") ||
+      lang.startsWith("be") ||
+      lang.startsWith("kk")
+    ) {
+      return "ru";
+    }
+    return "en";
   } catch {
     return "ru";
   }
