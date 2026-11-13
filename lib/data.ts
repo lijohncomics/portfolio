@@ -118,8 +118,37 @@ export type LocalizedWork = {
   figmaEmbeds?: { src: string; afterImage: number }[];
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+function withBasePath(path?: string): string | undefined {
+  if (!path) return path;
+  if (path.startsWith("http") || (basePath && path.startsWith(basePath))) {
+    return path;
+  }
+  return `${basePath}${path}`;
+}
+
 function localizeWork(work: Work, locale: Locale): LocalizedWork {
   return {
+    slug: work.slug,
+    index: work.index,
+    title: locale === "en" ? work.titleEn : work.titleRu,
+    type: locale === "en" ? work.typeEn : work.typeRu,
+    year: work.year,
+    client: locale === "en" ? work.clientEn : work.clientRu,
+    category: work.category,
+    description: locale === "en" ? work.descriptionEn : work.descriptionRu,
+    cover: withBasePath(work.cover),
+    coverAspect: work.coverAspect,
+    coverOnPage: work.coverOnPage,
+    images: work.images?.map((image) => ({
+      src: withBasePath(image.src) || image.src,
+      caption: locale === "en" ? image.captionEn : image.captionRu,
+    })),
+    figmaEmbeds: work.figmaEmbeds,
+  };
+}
+
     slug: work.slug,
     index: work.index,
     title: locale === "en" ? work.titleEn : work.titleRu,
