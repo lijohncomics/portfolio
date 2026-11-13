@@ -10,7 +10,7 @@ import { FigmaPrototype } from "@/components/figma-prototype";
 import { useDict, useLocale, usePageTitle } from "@/lib/i18n";
 
 const localVideoReels: Partial<Record<string, string>> = {
-  "visual-navigation": "/portfolio/works/visual-navigation/reel.mp4",
+  "visual-navigation": "/portfolio/works/visual-navigation/showreel.mp4",
 };
 
 function WorkNav({
