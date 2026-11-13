@@ -281,9 +281,6 @@ export function SiteHeader() {
                 aria-label={dict.header.navLabel}
                 className="md:hidden absolute left-0 top-[calc(100%+0.75rem)] w-64 max-w-[calc(100vw-3rem)] glass-panel shadow-lg animate-in fade-in slide-in-from-top-2 duration-200"
               >
-                <p className="marginalia border-b border-border/60 px-4 py-3">
-                  {dict.header.navLabel}
-                </p>
                 {navLinks.map((link) => {
                   const active =
                     pathname === link.href ||
