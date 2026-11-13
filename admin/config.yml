@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: lijohncomics/portfolio
+  branch: main
+
+media_folder: "public/works"
+public_folder: "/works"
+
+collections:
+  - name: "portfolio"
+    label: "Управление сайтом"
+    files:
+      - name: "works"
+        label: "Проекты (Работы)"
+        file: "data/works.json"
+        fields:
+          - name: "items"
+            label: "Список работ"
+            widget: "list"
+            summary: "{{fields.index}} — {{fields.titleRu}} ({{fields.year}})"
+            fields:
+              - { name: "index", label: "Номер (например, 06)", widget: "string" }
+              - { name: "slug", label: "Адрес страницы латиницей (например, new-project)", widget: "string" }
+              - { name: "titleRu", label: "Название (RU)", widget: "string" }
+              - { name: "titleEn", label: "Название (EN)", widget: "string" }
+              - { name: "typeRu", label: "Тип проекта (RU)", widget: "string" }
+              - { name: "typeEn", label: "Тип проекта (EN)", widget: "string" }
+              - { name: "year", label: "Год", widget: "string" }
+              - { name: "clientRu", label: "Клиент (RU)", widget: "string" }
+              - { name: "clientEn", label: "Клиент (EN)", widget: "string" }
+              - name: "category"
+                label: "Категория"
+                widget: "select"
+                options:
+                  - { label: "Графический дизайн", value: "graphic" }
+                  - { label: "UI/UX", value: "uiux" }
+              - { name: "descriptionRu", label: "Описание (RU)", widget: "text" }
+              - { name: "descriptionEn", label: "Описание (EN)", widget: "text" }
+              - { name: "cover", label: "Обложка проекта", widget: "image", required: false }
+              - { name: "coverAspect", label: "Пропорции обложки (например, 1616 / 1264)", widget: "string", default: "1616 / 1264", required: false }
+              - { name: "coverOnPage", label: "Показывать обложку внутри страницы", widget: "boolean", default: true, required: false }
+              - name: "images"
+                label: "Галерея картинок проекта"
+                widget: "list"
+                required: false
+                fields:
+                  - { name: "src", label: "Картинка", widget: "image" }
+                  - { name: "captionRu", label: "Подпись (RU)", widget: "string" }
+                  - { name: "captionEn", label: "Подпись (EN)", widget: "string" }
