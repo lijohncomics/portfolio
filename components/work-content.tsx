@@ -6,12 +6,11 @@ import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import { getWorks, getWork } from "@/lib/data";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
-import { YouTubeReel } from "@/components/youtube-reel";
 import { FigmaPrototype } from "@/components/figma-prototype";
 import { useDict, useLocale, usePageTitle } from "@/lib/i18n";
 
-const youTubeVideoIds: Partial<Record<string, string>> = {
-  "visual-navigation": "_8u6PoPQV9U",
+const localVideoReels: Partial<Record<string, string>> = {
+  "visual-navigation": "/portfolio/works/visual-navigation/reel.mp4",
 };
 
 function WorkNav({
@@ -113,24 +112,41 @@ export function WorkContent() {
             <div className="flex flex-col">
               {images.map((image, idx) => (
                 <Fragment key={image.src}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={image.src}
-                    alt={dict.works.imageAlt(
-                      work.title,
-                      idx + 1,
-                      images.length
-                    )}
-                    className="block w-full h-auto"
-                    loading={idx === 0 ? "eager" : "lazy"}
-                  />
-                  {idx === 0 && youTubeVideoIds[work.slug] ? (
-                    <YouTubeReel
-                      videoId={youTubeVideoIds[work.slug] as string}
-                      caption={dict.works.showReelCaption}
-                      title={`${work.title} — ${dict.works.workReelTitle}`}
-                      note={dict.works.reelNote}
+                  {image.src.toLowerCase().endsWith(".mp4") ? (
+                    <video
+                      src={image.src}
+                      controls
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="block w-full h-auto"
                     />
+                  ) : (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={image.src}
+                      alt={dict.works.imageAlt(
+                        work.title,
+                        idx + 1,
+                        images.length
+                      )}
+                      className="block w-full h-auto"
+                      loading={idx === 0 ? "eager" : "lazy"}
+                    />
+                  )}
+                  {idx === 0 && localVideoReels[work.slug] ? (
+                    <div className="my-8 md:my-12">
+                      <video
+                        src={localVideoReels[work.slug]}
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="block w-full h-auto"
+                      />
+                    </div>
                   ) : null}
                   {(work.figmaEmbeds ?? [])
                     .filter((embed) => embed.afterImage === idx)
