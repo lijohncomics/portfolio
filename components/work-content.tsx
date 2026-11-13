@@ -136,7 +136,6 @@ export function WorkContent() {
                     />
                   )}
                   {idx === 0 && localVideoReels[work.slug] ? (
-                    <div className="my-8 md:my-12">
                       <video
                         src={localVideoReels[work.slug]}
                         controls
@@ -146,7 +145,6 @@ export function WorkContent() {
                         playsInline
                         className="block w-full h-auto"
                       />
-                    </div>
                   ) : null}
                   {(work.figmaEmbeds ?? [])
                     .filter((embed) => embed.afterImage === idx)
