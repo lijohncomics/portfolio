@@ -15,7 +15,7 @@
       "descriptionEn": "A concept of unified visual wayfinding for Nizhny Novgorod electric transport. The project addresses the problem of a fragmented urban environment where the metro, trams, trolleybuses and a cable car exist in isolation from each other. Based on JTBD UX research, an end-to-end design system was created: colour and line-shape coding for transport modes, a system of recognisable city markers. The result is a seamless combined route that reduces passenger cognitive load and scales easily to both physical media and digital environments.",
       "cover": "/works/visual-navigation/cover.png",
       "coverAspect": "1616 / 1264",
-      "coverOnPage": true,
+      "coverOnPage": false,
       "images": [
         { "src": "/works/visual-navigation/1.png", "captionRu": "фиг. 01 — обложка проекта", "captionEn": "fig. 01 — project cover" },
         { "src": "/works/visual-navigation/2.png", "captionRu": "фиг. 02 — исследование и проблема", "captionEn": "fig. 02 — research and problem" },
