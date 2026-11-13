@@ -4,14 +4,15 @@ import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "next-themes";
 
 function ThemeSync() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme } = useTheme();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("site-theme");
-    if (!savedTheme || savedTheme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      setTheme(systemTheme);
-    }
+    try {
+      localStorage.removeItem("site-theme");
+    } catch (e) {}
+
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setTheme(systemTheme);
   }, [setTheme]);
 
   return null;
