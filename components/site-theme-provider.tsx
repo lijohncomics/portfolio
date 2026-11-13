@@ -4,26 +4,28 @@ import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "next-themes";
 
 function ThemeSync() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme } = useTheme();
 
   useEffect(() => {
-    // 1. Принудительно очищаем старую память при каждом заходе или обновлении страницы (Cmd+R)
-    try {
-      localStorage.removeItem("site-theme");
-    } catch (e) {}
-
-    // 2. Считываем реальную системную тему устройства в эту секунду
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const systemTheme = mediaQuery.matches ? "dark" : "light";
+    
+    // Проверяем, зафиксировал ли пользователь тему в текущей сессии вкладки
+    const sessionActive = sessionStorage.getItem("theme-clicked");
 
-    // 3. Выставляем тему устройства как стартовую
-    setTheme(systemTheme);
+    if (!sessionActive) {
+      // Если это первый заход во вкладку, строго подчиняемся системе устройства
+      const systemTheme = mediaQuery.matches ? "dark" : "light";
+      setTheme(systemTheme);
+      // Сбрасываем долгосрочную память, чтобы при следующем открытии сайта приоритет был у системы
+      try {
+        localStorage.removeItem("site-theme");
+      } catch (e) {}
+    }
 
-    // 4. Слушаем, если пользователь изменит тему в настройках самого Mac/смартфона, пока вкладка открыта
+    // Слушаем изменение темы в настройках самого Mac/смартфона в реальном времени
     const handleChange = (e: MediaQueryListEvent) => {
-      // Меняем тему устройства только если пользователь не переключал тумблер вручную на сайте
-      const currentStored = localStorage.getItem("site-theme");
-      if (!currentStored || currentStored === "system") {
+      const sessionActiveNow = sessionStorage.getItem("theme-clicked");
+      if (!sessionActiveNow) {
         setTheme(e.matches ? "dark" : "light");
       }
     };
