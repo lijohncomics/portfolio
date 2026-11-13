@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import { getWorks, getWork } from "@/lib/data";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
@@ -99,12 +100,15 @@ export function WorkContent() {
           className="pb-12 md:pb-16 xl:pb-24 px-6 lg:px-0"
         >
           {work.cover && work.coverOnPage ? (
-            <div className="mb-12 md:mb-16 xl:mb-24">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="mb-12 md:mb-16 xl:mb-24 relative w-full h-auto">
+              <Image
                 src={work.cover}
                 alt={dict.works.previewAlt(work.title)}
-                className="block w-full h-auto object-left"
+                width={1920}
+                height={1080}
+                className="block w-full h-auto object-left select-none image-render-crisp"
+                priority
+                unoptimized
               />
             </div>
           ) : null}
@@ -123,28 +127,33 @@ export function WorkContent() {
                       className="block w-full h-auto"
                     />
                   ) : (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img
-                      src={image.src}
-                      alt={dict.works.imageAlt(
-                        work.title,
-                        idx + 1,
-                        images.length
-                      )}
-                      className="block w-full h-auto"
-                      loading={idx === 0 ? "eager" : "lazy"}
-                    />
+                    <div className="relative w-full h-auto">
+                      <Image
+                        src={image.src}
+                        alt={dict.works.imageAlt(
+                          work.title,
+                          idx + 1,
+                          images.length
+                        )}
+                        width={2560}
+                        height={1440}
+                        className="block w-full h-auto image-render-crisp select-none"
+                        loading={idx < 2 ? "eager" : "lazy"}
+                        priority={idx < 2}
+                        unoptimized
+                      />
+                    </div>
                   )}
                   {idx === 0 && localVideoReels[work.slug] ? (
-                      <video
-                        src={localVideoReels[work.slug]}
-                        controls
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="block w-full h-auto"
-                      />
+                    <video
+                      src={localVideoReels[work.slug]}
+                      controls
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="block w-full h-auto"
+                    />
                   ) : null}
                   {(work.figmaEmbeds ?? [])
                     .filter((embed) => embed.afterImage === idx)
