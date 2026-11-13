@@ -121,7 +121,7 @@ export function WorkContent() {
                         loop
                         muted
                         playsInline
-                        className="block max-w-full h-auto"
+                        className="block max-w-full h-auto image-render-crisp"
                       />
                     </div>
                   ) : (
@@ -146,7 +146,7 @@ export function WorkContent() {
                         loop
                         muted
                         playsInline
-                        className="block max-w-full h-auto"
+                        className="block max-w-full h-auto image-render-crisp"
                       />
                     </div>
                   ) : null}
