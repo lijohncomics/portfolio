@@ -95,7 +95,7 @@ const en: Dict = {
     about: "About",
     contacts: "Contacts",
     menu: "Menu",
-    animation: "animation",
+    animation: "Animation",
     navLabel: "Main navigation",
     settings: "Settings",
     settingsMenu: "Site settings",
