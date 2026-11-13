@@ -31,5 +31,5 @@ export function LocalTime({ className }: { className?: string }) {
     };
   }, [dict]);
 
-  return <span className={className}>{time ?? `—:— ${dict.home.localTime}`}</span>;
+  return <span className={className}>{time ?? dict.home.localTime}</span>;
 }
