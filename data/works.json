@@ -91,15 +91,15 @@
       ],
       "figmaEmbeds": [
         {
-          "src": "https://figma.com",
+          "src": "<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/xs1Opz4MNMI36Jt4JgqDS6/Ozon-Family?node-id=3143-21733&p=f&viewport=41%2C342%2C0.1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3143%3A21733&page-id=3143%3A19549&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>",
           "afterImage": 1
         },
         {
-          "src": "https://figma.com",
+          "src": "<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/xs1Opz4MNMI36Jt4JgqDS6/Ozon-Family?node-id=3143-25281&p=f&viewport=45%2C302%2C0.17&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3143%3A25281&page-id=3143%3A19550&embed-host=share" allowfullscreen></iframe>",
           "afterImage": 2
         },
         {
-          "src": "https://figma.com",
+          "src": "<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/xs1Opz4MNMI36Jt4JgqDS6/Ozon-Family?node-id=3143-26923&p=f&viewport=45%2C538%2C0.12&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3143%3A26923&page-id=3143%3A19551&embed-host=share" allowfullscreen></iframe>",
           "afterImage": 3
         }
       ]
