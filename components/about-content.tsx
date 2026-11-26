@@ -1,7 +1,8 @@
 "use client";
 
-import { getAbout, getDesigner } from "@/lib/data";
+import { getAbout } from "@/lib/data";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
+import { DesignerLocation } from "@/components/local-time";
 import { useDict, useLocale, usePageTitle } from "@/lib/i18n";
 
 export function AboutContent() {
@@ -9,14 +10,15 @@ export function AboutContent() {
   const dict = useDict();
   usePageTitle(dict.about.pageTitle);
   const localized = getAbout(locale);
-  const d = getDesigner(locale);
 
   return (
     <div className="container-site">
       <section className="pt-12 md:pt-20 xl:pt-28 pb-16 md:pb-24 xl:pb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-baseline justify-between gap-4 border-b pb-4">
           <p className="marginalia">{dict.about.kicker}</p>
-          <p className="marginalia">{d.location}</p>
+          <p className="marginalia">
+            <DesignerLocation />
+          </p>
         </div>
       </section>
 
