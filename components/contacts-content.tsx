@@ -3,6 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { getContactLinks, getDesigner } from "@/lib/data";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
+import { DesignerLocation } from "@/components/local-time";
 import { useDict, useLocale, usePageTitle } from "@/lib/i18n";
 
 export function ContactsContent() {
@@ -17,7 +18,9 @@ export function ContactsContent() {
       <section className="pt-12 md:pt-20 xl:pt-28 pb-16 md:pb-24 xl:pb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-baseline justify-between gap-4 border-b pb-4 mb-6">
           <p className="marginalia">{dict.contacts.kicker}</p>
-          <p className="marginalia">{d.location}</p>
+          <p className="marginalia">
+            <DesignerLocation />
+          </p>
         </div>
         <h1 className="text-[clamp(2.5rem,10vw,8.5rem)] font-bold leading-[0.92] tracking-tighter uppercase break-words">
           {dict.contacts.titlePlain}{" "}
