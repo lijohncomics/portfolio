@@ -124,7 +124,9 @@ export function HomeContent() {
           </h1>
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-12 md:gap-4 md:items-baseline md:mt-3 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <p className="marginalia md:col-span-3">{d.location}</p>
+         <p className="marginalia md:col-span-4">
+  {d.location} <LocalTime onlyClock />
+</p>
           <p className="text-lg md:text-xl max-w-xl leading-relaxed md:col-span-9 md:col-start-4 md:pl-[4%]">
             {d.tagline}
           </p>
