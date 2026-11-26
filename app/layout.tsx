@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ScrollAnimationProvider } from "@/components/scroll-animation";
 import { LanguageProvider } from "@/lib/i18n";
 import { SiteThemeProvider } from "@/components/site-theme-provider";
+import { CookieNotice } from "@/components/cookie-notice";
 
 const geist = Geist({
   subsets: ["latin", "cyrillic"],
@@ -40,7 +42,7 @@ export default function RootLayout({
       className={cn("font-sans", geist.variable, geistMono.variable)}
       suppressHydrationWarning
     >
-            <head>
+      <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <script
           dangerouslySetInnerHTML={{
@@ -60,7 +62,6 @@ export default function RootLayout({
           }}
         />
       </head>
-
       <body className="antialiased min-h-screen bg-background text-foreground flex flex-col">
         <SiteThemeProvider>
           <BridgeProvider />
@@ -70,9 +71,36 @@ export default function RootLayout({
               <main className="flex-1">{children}</main>
               <SiteFooter />
             </ScrollAnimationProvider>
+            <CookieNotice />
           </LanguageProvider>
         </SiteThemeProvider>
         <Toaster richColors position="top-right" />
+
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t),k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://yandex.ru", "ym");
+
+            ym(14702423, "init", {
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+              webvisor:true
+            });
+          `}
+        </Script>
+        <noscript>
+          <div>
+            <img
+              src="https://yandex.ru"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
       </body>
     </html>
   );
