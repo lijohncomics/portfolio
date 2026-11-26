@@ -76,7 +76,7 @@ export default function RootLayout({
         </SiteThemeProvider>
         <Toaster richColors position="top-right" />
 
-        <Script id="yandex-metrika" strategy="afterInteractive">
+                <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
@@ -84,7 +84,7 @@ export default function RootLayout({
             k=e.createElement(t),a=e.getElementsByTagName(t),k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
             (window, document, "script", "https://yandex.ru", "ym");
 
-            ym(14702423, "init", {
+            ym(114702423, "init", {
               clickmap:true,
               trackLinks:true,
               accurateTrackBounce:true,
