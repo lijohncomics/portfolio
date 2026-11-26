@@ -153,8 +153,7 @@
 "coverAspect": "6734 / 5267",
 "coverOnPage": false,
 "images": [
-{ "src": "/works/comics-magazine/1.png", "captionRu": "иллюстрация 01", "captionEn": "illustration 01" },
-{ "src": "/works/comics-magazine/2.png", "captionRu": "иллюстрация 02", "captionEn": "illustration 02" }
+{ "src": "/works/comics-magazine/1.png", "captionRu": "иллюстрация 01", "captionEn": "illustration 01" }
 ],
 "figmaEmbeds": []
 }
