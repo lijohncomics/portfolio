@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/i18n";
+import { getDesigner } from "@/lib/data";
 
 export function LocalTime({
   className,
@@ -44,6 +45,16 @@ export function LocalTime({
   return (
     <span className={className}>
       {currentClock} {label}
+    </span>
+  );
+}
+
+export function DesignerLocation({ className }: { className?: string }) {
+  const { locale } = useLocale();
+  const d = getDesigner(locale);
+  return (
+    <span className={className}>
+      {d.location} <LocalTime onlyClock />
     </span>
   );
 }
