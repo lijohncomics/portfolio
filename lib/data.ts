@@ -15,8 +15,8 @@ export const designer = {
     "Проектирую визуальные системы и айдентику, довожу идеи до готовых макетов — от концепции до чистого печатного файла.",
   taglineEn:
     "I design visual systems and identity, taking ideas all the way to finished layouts — from concept to a clean print-ready file.",
-  locationRu: "Нижний Новгород, UTC+3",
-  locationEn: "Nizhny Novgorod, UTC+3",
+  locationRu: "Нижний Новгород — моё текущее время",
+  locationEn: "Nizhny Novgorod — my current time",
   yandexEmail: "JohnLiComics@yandex.ru",
   gmailEmail: "li.john.comics@gmail.com",
   telegram: { label: "@john_li_comics", href: "https://t.me" },
