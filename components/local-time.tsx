@@ -17,8 +17,10 @@ export function LocalTime({
   useEffect(() => {
     const format = () => {
       const now = new Date();
+      // Если onlyClock = true (блок автора), жестко фиксируем Нижний Новгород (UTC+3).
+      // Иначе берем местный часовой пояс устройства посетителя (например, Ямал).
       const formatted = now.toLocaleTimeString("ru-RU", {
-        timeZone: "Europe/Moscow",
+        ...(onlyClock ? { timeZone: "Europe/Moscow" } : {}),
         hour: "2-digit",
         minute: "2-digit",
         hourCycle: "h23",
@@ -33,7 +35,7 @@ export function LocalTime({
       clearInterval(id);
       window.removeEventListener("focus", format);
     };
-  }, []);
+  }, [onlyClock]);
 
   const currentClock = clock ?? "—:—";
 
